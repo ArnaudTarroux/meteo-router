@@ -1,9 +1,9 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ComputeWeatherFromAddress } from '../compute-weather.types';
-import { Geocoding } from '../../geocoding/interfaces/geocoding';
-import { Routing } from '../../routing/interfaces';
 import { RouteSamplerService } from './route-sampler.service';
-import { Weather } from '../../weather/interfaces';
+import { Weather } from '../../weather/contracts';
+import { Routing } from '../../routing/contracts';
+import { Geocoding } from '../../geocoding/contracts/geocoding';
 
 @Injectable()
 export class RouteWeatherService {

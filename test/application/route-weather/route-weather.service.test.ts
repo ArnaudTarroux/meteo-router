@@ -1,9 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RouteWeatherService } from '../../../src/application/route-weather/services/route-weather.service';
-import { Geocoding } from '../../../src/application/geocoding/interfaces/geocoding';
-import { Routing } from '../../../src/application/routing/interfaces';
-import { Weather } from '../../../src/application/weather/interfaces';
-import { RouteSamplerService } from '../../../src/application/route-weather/services/route-sampler.service';
+import { Geocoding } from '../../../src/application/geocoding/contracts/geocoding';
+import { Routing } from '../../../src/application/routing/contracts';
+import { Weather } from '../../../src/application/weather/contracts';
+import {
+  RouteSamplerService,
+  RouteWeatherService,
+} from '../../../src/application/route-weather/providers';
 
 describe('RouteWeatherService - computeRouteWeatherFromAddress', () => {
   let service: RouteWeatherService;

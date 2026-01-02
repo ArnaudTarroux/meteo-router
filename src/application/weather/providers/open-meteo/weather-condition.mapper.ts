@@ -1,5 +1,5 @@
 import { WeatherCode } from './open-meteo.response';
-import { WeatherCondition } from '../../interfaces/weather.types';
+import { WeatherCondition } from '../../contracts';
 
 const weatherCodeToWeatherConditionMap: Record<WeatherCode, WeatherCondition> =
   {

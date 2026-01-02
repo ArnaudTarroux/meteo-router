@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { Geocoding } from './interfaces/geocoding';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { SmappenPeliasGeocoding } from './implementations';
+import { Geocoding } from './contracts/geocoding';
+import { SmappenPeliasGeocoding } from './providers';
 
 @Module({
   imports: [

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { Routing } from './interfaces';
-import { OpenRouteRouting } from './implementations';
 import { HttpModule } from '@nestjs/axios';
+import { Routing } from './contracts';
+import { OpenRouteRouting } from './providers';
 
 @Module({
   imports: [

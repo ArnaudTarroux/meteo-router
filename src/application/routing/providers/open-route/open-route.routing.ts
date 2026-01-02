@@ -1,11 +1,10 @@
-import { Routing } from '../../interfaces';
 import { Coordinates, TimedWaypoint } from '../../../../shared/types';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Injectable, Logger } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { Geometry, OpenRouteResponse, Segment } from './open-route.response';
-import { RoutingType } from '../../interfaces';
+import { Routing, RoutingType } from '../../contracts';
 
 @Injectable()
 export class OpenRouteRouting implements Routing {

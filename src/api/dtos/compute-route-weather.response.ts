@@ -1,5 +1,5 @@
 import { Coordinates } from '../../shared/types';
-import { WeatherCondition } from '../../application/weather/interfaces/weather.types';
+import { WeatherCondition } from '../../application/weather/contracts';
 
 class WaypointWeatherResponse {
   location: Coordinates;

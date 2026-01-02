@@ -1,4 +1,3 @@
-import { Geocoding } from '../../interfaces/geocoding';
 import { Coordinates } from '../../../../shared/types';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
@@ -6,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import { SmappenPeliasResponse } from './smappen-pelias.response';
 import { Injectable, Logger } from '@nestjs/common';
 import { AddressNotFoundError } from '../../errors';
+import { Geocoding } from '../../contracts/geocoding';
 
 @Injectable()
 export class SmappenPeliasGeocoding implements Geocoding {

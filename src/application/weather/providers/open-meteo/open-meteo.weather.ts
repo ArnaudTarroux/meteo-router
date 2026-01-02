@@ -1,13 +1,12 @@
-import { Weather } from '../../interfaces';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom } from 'rxjs';
 import { Injectable, Logger } from '@nestjs/common';
 import { OpenMeteoApiResponse } from './open-meteo.response';
 import { WaypointWithPassageDatetime } from '../../../../shared/types/waypoint-with-passage-datetime.type';
-import { WeatherType } from '../../interfaces/weather.types';
 import { WaypointWeatherNotFoundError } from '../../errors';
 import { mapWeatherCodeToWeatherCondition } from './weather-condition.mapper';
+import { Weather, WeatherType } from '../../contracts';
 
 @Injectable()
 export class OpenMeteoWeather implements Weather {

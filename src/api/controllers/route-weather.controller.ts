@@ -6,10 +6,10 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { ComputeRouteWeatherRequest } from '../dtos/compute-route-weather.request';
-import { RouteWeatherService } from '../../application/route-weather/services/route-weather.service';
 import { ComputeRouteWeatherResponse } from '../dtos/compute-route-weather.response';
 import { AddressNotFoundError } from '../../application/geocoding/errors';
 import { WaypointWeatherNotFoundError } from '../../application/weather/errors';
+import { RouteWeatherService } from '../../application/route-weather/providers';
 
 @Controller('route-weather')
 export class RouteWeatherController {

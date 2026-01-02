@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { Weather } from './interfaces';
-import { OpenMeteoWeather } from './implementations';
 import { HttpModule } from '@nestjs/axios';
+import { Weather } from './contracts';
+import { OpenMeteoWeather } from './providers';
 
 @Module({
   imports: [
