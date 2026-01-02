@@ -54,6 +54,7 @@ export class RouteWeatherService {
       weather: await this.weather.getWeatherAt(
         sampledWaypointsWithPassageDatetime,
       ),
+      route: waypoints.map((waypoint) => waypoint.location),
     };
   }
 

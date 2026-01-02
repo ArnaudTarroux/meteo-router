@@ -17,13 +17,14 @@ export class RouteWeatherController {
   @Get()
   async computeRouteWeather(@Query() query: ComputeRouteWeatherRequest) {
     try {
-      const weather =
+      const weatherRouting =
         await this.routeWeatherService.computeRouteWeatherFromAddress(query);
 
       return new ComputeRouteWeatherResponse(
-        weather.distance,
-        weather.duration,
-        weather.weather.map((waypoint) => ({
+        weatherRouting.distance,
+        weatherRouting.duration,
+        weatherRouting.route,
+        weatherRouting.weather.map((waypoint) => ({
           location: waypoint.location,
           passageDatetime: waypoint.passageDatetime,
           weather: {

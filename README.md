@@ -44,6 +44,20 @@ Pour infos, ils sont triés du point d'arrivée au point de départ.
 {
     "distance": 145057.6, // en mètres
     "duration": 6874.8, // en secondes
+    "route": [
+      {
+        "lat": 42.899591,
+        "lng": 0.632948
+      },
+      {
+        "lat": 42.899499,
+        "lng": 0.632864
+      },
+      {
+        "lat": 42.899403,
+        "lng": 0.632729
+      }
+    ],
     "waypoints": [
         {
             "location": {

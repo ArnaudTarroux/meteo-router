@@ -15,15 +15,18 @@ class WaypointWeatherResponse {
 export class ComputeRouteWeatherResponse {
   distance: number;
   duration: number;
+  route: Coordinates[];
   waypoints: WaypointWeatherResponse[];
 
   constructor(
     distance: number,
     duration: number,
+    route: Coordinates[],
     waypoints: WaypointWeatherResponse[],
   ) {
     this.distance = distance;
     this.duration = duration;
+    this.route = route;
     this.waypoints = waypoints;
   }
 }
