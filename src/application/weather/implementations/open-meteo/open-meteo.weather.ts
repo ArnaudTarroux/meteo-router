@@ -32,26 +32,7 @@ export class OpenMeteoWeather implements Weather {
       (a, b) => b.passageDatetime.getTime() - a.passageDatetime.getTime(),
     )[0]?.passageDatetime;
 
-    const { data } = await firstValueFrom(
-      this.httpService.get<OpenMeteoApiResponse[]>(
-        `${this.openMeteoHost}/v1/forecast`,
-        {
-          params: {
-            latitude: waypoints.map((waypoint) => waypoint.location.lat),
-            longitude: waypoints.map((waypoint) => waypoint.location.lng),
-            minutely_15: [
-              'temperature_2m',
-              'weather_code',
-              'precipitation_probability',
-              'wind_speed_10m',
-            ],
-            timezone: 'Europe/Paris',
-            start_date: new Intl.DateTimeFormat('en-CA').format(startDate), // YYYY-MM-DD
-            end_date: new Intl.DateTimeFormat('en-CA').format(endDate), // YYYY-MM-DD
-          },
-        },
-      ),
-    );
+    const data = await this.getWeatherData(waypoints, startDate, endDate);
 
     return waypoints.map((waypoint) => {
       const matchedWeather: OpenMeteoApiResponse | undefined = data.find(
@@ -86,6 +67,40 @@ export class OpenMeteoWeather implements Weather {
         },
       };
     });
+  }
+
+  private async getWeatherData(
+    waypoints: WaypointWithPassageDatetime[],
+    startDate: Date | undefined,
+    endDate: Date | undefined,
+  ): Promise<OpenMeteoApiResponse[]> {
+    try {
+      const { data } = await firstValueFrom(
+        this.httpService.get<OpenMeteoApiResponse[]>(
+          `${this.openMeteoHost}/v1/forecast`,
+          {
+            params: {
+              latitude: waypoints.map((waypoint) => waypoint.location.lat),
+              longitude: waypoints.map((waypoint) => waypoint.location.lng),
+              minutely_15: [
+                'temperature_2m',
+                'weather_code',
+                'precipitation_probability',
+                'wind_speed_10m',
+              ],
+              timezone: 'Europe/Paris',
+              start_date: new Intl.DateTimeFormat('en-CA').format(startDate), // YYYY-MM-DD
+              end_date: new Intl.DateTimeFormat('en-CA').format(endDate), // YYYY-MM-DD
+            },
+          },
+        ),
+      );
+
+      return data;
+    } catch (error) {
+      this.logger.error(`Error fetching weather data: ${error.message}`);
+      throw new Error(`Error fetching weather data`);
+    }
   }
 
   private findWeatherIndex(
